@@ -102,7 +102,7 @@ restockButton.addEventListener("click", () => {
       renderProducts();
     });
 
-    actionsCell.append(saleButton, deleteButton);
+    actionsCell.append(saleButton, restockbutton, deleteButton);
     row.append(nameCell, categoryCell, priceCell, stockCell, statusCell, actionsCell);
     tableBody.append(row);
   }
