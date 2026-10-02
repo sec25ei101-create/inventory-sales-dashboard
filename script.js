@@ -75,6 +75,22 @@ function renderProducts() {
       saveProducts();
       renderProducts();
     });
+    const restockButton = document.createElement("button");
+restockButton.type = "button";
+restockButton.className = "action-button";
+restockButton.textContent = "Restock";
+
+restockButton.addEventListener("click", () => {
+  const quantity = Number(prompt("How many units should be added?"));
+
+  if (!Number.isInteger(quantity) || quantity <= 0) {
+    return;
+  }
+
+  product.stock += quantity;
+  saveProducts();
+  renderProducts();
+});
 
     const deleteButton = document.createElement("button");
     deleteButton.type = "button";
