@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inventory &amp; Sales Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="dashboard">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">BUSINESS OVERVIEW</p>
+        <h1>Inventory Dashboard</h1>
+        <p class="subtitle">Track products, stock levels, and sales.</p>
+      </div>
+      <button id="export-button" class="button button-secondary" type="button">
+        Export CSV
+      </button>
+    </header>
+
+    <section class="metrics" aria-label="Inventory summary">
+      <article class="metric-card">
+        <p>Total products</p>
+        <strong id="product-count">0</strong>
+      </article>
+      <article class="metric-card">
+        <p>Inventory value</p>
+        <strong id="inventory-value">₹0.00</strong>
+      </article>
+      <article class="metric-card">
+        <p>Low stock items</p>
+        <strong id="low-stock-count">0</strong>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>Add a product</h2>
+      <form id="product-form" class="product-form">
+        <div class="field">
+          <label for="product-name">Product name</label>
+          <input id="product-name" name="productName" type="text"
+                 placeholder="For example, Desk lamp" required>
+        </div>
+
+        <div class="field">
+          <label for="category">Category</label>
+          <select id="category" name="category" required>
+            <option value="">Choose one</option>
+            <option>Electronics</option>
+            <option>Clothing</option>
+            <option>Home</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="price">Price (₹)</label>
+          <input id="price" name="price" type="number" min="0.01"
+                 step="0.01" placeholder="0.00" required>
+        </div>
+
+        <div class="field">
+          <label for="stock">Stock quantity</label>
+          <input id="stock" name="stock" type="number" min="0"
+                 step="1" placeholder="0" required>
+        </div>
+
+        <button class="button button-primary" type="submit">Add product</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="inventory-heading">
+        <div>
+          <h2>Products</h2>
+          <p class="muted">Manage stock and record sales.</p>
+        </div>
+        <div class="filters">
+          <label class="visually-hidden" for="search">Search products</label>
+          <input id="search" type="search" placeholder="Search products">
+          <label class="visually-hidden" for="category-filter">Filter by category</label>
+          <select id="category-filter">
+            <option value="">All categories</option>
+            <option>Electronics</option>
+            <option>Clothing</option>
+            <option>Home</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>In stock</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="products-table-body"></tbody>
+        </table>
+      </div>
+
+      <p id="empty-message" class="empty-message">
+        No products yet. Add a product above to get started.
+      </p>
+    </section>
+
+    <footer>Inventory &amp; Sales Dashboard · Data saved in this browser</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
